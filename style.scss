@@ -1,0 +1,274 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+li {
+  list-style: none;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.windows {
+  max-width: 1085px;
+  margin: 0 auto 100px;
+  color: #535353;
+  padding: 0 15px;
+  &__grid {
+    display: flex;
+    margin: 0 -15px;
+    position: relative;
+    flex-wrap: wrap;
+    &.active::after {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255,255,255,0.5);
+    }
+  }
+}
+
+.item-windows {
+  flex: 0 0 calc(33.333% - 30px);
+  margin: 15px;
+  position: relative;
+  text-align: center;
+  transition: all .4s;
+  &.active {
+    z-index: 3;
+  }
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  &__img {
+    position: relative;
+    display: inline-block;
+    img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin: 0 auto;
+      height: 260px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 99%;
+      height: 99%;
+      background: url(../img/sky.jpg) fixed;
+      background-size: cover;
+    }
+  }
+  &__descr {
+    position: relative;
+    z-index: 2;
+  }
+  &__choose {
+    margin: 0 auto;
+    font-size: 12px;
+    height: 12px;
+    letter-spacing: 0.03em;
+    color: #979797;
+    text-align: center;
+  }
+}
+
+.select {
+	margin: 0 auto 15px;
+  position: relative;
+  width: 305px;
+}
+.select.is-active .select__body {
+  display: block;
+}
+
+.select__header {
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.select__current {
+	font-size: 14px;
+  line-height: 24px;
+  color: #535353;
+	padding: 8px;
+}
+.select__icon {
+	align-items: center;
+	display: flex;
+	flex-shrink: 0;
+	justify-content: center;
+	height: 10px;
+	margin-left: auto;
+  width: 12px;
+  transition: transform .3s;
+  &.active {
+    animation: rotate .2s;
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.select__body {
+	display: none;
+	left: 0;
+	position: absolute;
+	right: 0;
+  top: 100%;
+  text-align: left;
+  background-color: #fff;
+  z-index: 1;
+}
+.select__item {
+  cursor: pointer;
+  border-bottom: 1px solid #cccccc;
+	font-size: 14px;
+	line-height: 24px;
+  padding: 8px;
+  transition: color .3s ease;
+  &:hover {
+    color: #F26422;
+    .select__price {
+      color: #F26422;
+    }
+  }
+}
+
+.select__price {
+  font-size: 16px;
+  color: #000;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.item-windows__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  &-text {
+    max-width: 190px;
+  }
+  &-btn {
+    width: 16px;
+    height: 16px;
+    margin-left: 15px;
+    background-size: contain;
+    cursor: pointer;
+    background-image: url(../img/quest.svg);
+    background-repeat: no-repeat;
+    &.active {
+      background-image: url(../img/close.svg);
+    }
+  }
+}
+
+.item-windows__about {
+  position: relative;
+  max-width: 235px;
+  margin: 0 auto;
+}
+
+.item-windows__price {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+  }
+  &-old {
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration: line-through #F26422;
+  }
+  &-new {
+    font-size: 28px;
+    color: #F26422;
+    font-weight: bold;
+  }
+}
+
+.item-windows__material {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  font-size: 13px;
+  text-align: left;
+  color: #6e6e6e;
+  span {
+    font-size: 14px;
+    color: #3c3c3b;
+  }
+  &.active {
+    opacity: 1;
+  }
+}
+
+.item-windows__credit-title {
+  color: #535353;
+}
+
+.item-windows__credit {
+  color: #000;
+  font-weight: bold;
+}
+
+.item-windows__credit-span {
+  color: #F26422;
+}
+
+.item-windows__btn {
+  max-width: 246px;
+  margin: 15px auto 25px;
+  padding: 0 20px;
+  height: 44px;
+  line-height: 44px;
+  letter-spacing: 0.04em;
+  background: #f7f7f7;
+  color: #f26422;
+  font-size: 14px;
+  border: 1px solid #ebebeb;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all .5s ease;
+  &:hover {
+    background-color: #f26422;
+    color: #fff;
+    border: 1px solid #f26422;
+  }
+}
+
+
+
+
+@import "media";
+
+

@@ -1,0 +1,11 @@
+@media(max-width:1080px) {
+  .item-windows {
+    flex: 0 0 calc(50% - 30px);
+  }
+}
+
+@media(max-width:768px) {
+  .item-windows {
+    flex: 0 0 calc(100% - 30px);
+  }
+}
