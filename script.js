@@ -33,24 +33,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   select();
 
-  
+      
   
   let qBtn = document.querySelectorAll('.item-windows__info-btn')
 
   qBtn.forEach(function(elem) {
-    elem.addEventListener('click', function(){
-      let parent = this.closest('.item-windows')
-      parent.querySelector('.item-windows__price').classList.toggle('active')
-      parent.querySelector('.item-windows__material').classList.toggle('active')
-      parent.querySelector('.item-windows__info-btn').classList.toggle('active')
-      document.querySelector('.windows__grid').classList.toggle('active')
-      parent.classList.toggle('active')
-    })
+    elem.addEventListener('click', clickItemsBtn)
   })
 
+  function clickItemsBtn() {
+    let parent = this.closest('.item-windows')
+    parent.querySelector('.item-windows__price, .item-windows__material, .item-windows__info-btn').classList.toggle('active')
+    document.querySelector('.windows__grid').classList.toggle('active')
+    parent.classList.toggle('active')
+  }
   
-    
-  
-
 
 })
